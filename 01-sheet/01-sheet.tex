@@ -1,0 +1,66 @@
+\input{../header.tex}
+
+
+\title{-Name of the module-}
+\date{-semester-~} % WS 2019/2020, leave the ~ for better spacing
+\author{\href{mailto:max.mustermann@tu-dortmund.de}{Max Mustermann}}
+
+
+% number of the sheet
+\newcommand{\sheetnumber}{1}
+
+% Ausgabedatum
+%\newcommand{\publishdate}{09.10.2019} % is not used
+
+% Abgabedatum
+\newcommand{\handindate}{16.10.2019, 10:00 Uhr}
+
+% Nummer der letzten Aufgabe auf dem letzten Übungsblatt eintragen
+% number of last excercise on the previous sheet
+% if you wish to start each sheet with excercise 1, keep 0
+\setcounter{aufgabe}{0}
+
+
+\begin{document}
+
+% first question for 5 points with subtitle
+% if not wanted, remove it
+\begin{aufgabe}[subtitle={Tolle Aufgabe}, points=5]
+  \begin{enumerate}
+    \item Frage 1
+    \item Frage 2
+  \end{enumerate}
+\end{aufgabe}
+
+\begin{loesung}
+  \begin{enumerate}
+    \item Antwort Frage 1
+    \item Antwort Frage 2
+  \end{enumerate}
+\end{loesung}
+
+If you don't like the style of the excercises you can change it in the
+file \texttt{header.tex}.
+
+\begin{altaufgabe}[subtitle={Another style template}]
+  This looks different. If it doesn't please you, or you wish for more styles,
+  head to \texttt{header.tex} to the definition
+  \texttt{\textbackslash DeclareExerciseType} and create a new one.
+  Maybe just translate the words.
+\end{altaufgabe}
+
+\begin{altloesung}
+  Here is the solution for that
+\end{altloesung}
+
+If your goal is to do all excercise sheets in one folder, I would recommend
+to create a directory \texttt{sheets-module}.
+In there place the \texttt{header.tex}. Then for each sheet create a
+subdirectory with the \texttt{01-sheet.tex}, or \texttt{02-sheet.tex},
+and if you want the corresponding \texttt{Makefile}.
+In there you simply change in the first line 01 to the real number.
+
+In line 126 of \texttt{header.tex} the geometry of the solution-sheets is
+in a way adapted, that the maximum space is used,
+delet it, if it doesn't please you.
+\end{document}

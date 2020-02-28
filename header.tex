@@ -1,0 +1,139 @@
+\documentclass[
+  paper=a4,
+  headsepline,
+  parskip=half,
+  headheight=45pt,
+]{scrartcl}
+
+\usepackage[aux]{rerunfilecheck}
+
+\usepackage[main=ngerman]{babel}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage{fontspec}
+
+\usepackage[
+  math-style=ISO,
+  bold-style=ISO,
+  sans-style=italic,
+  nabla=upright,
+  partial=upright,
+]{unicode-math}
+\setmathfont{Latin Modern Math}
+
+\usepackage[autostyle]{csquotes}
+
+\usepackage[
+  locale=DE,
+  separate-uncertainty=true,
+  per-mode=symbol-or-fraction,
+]{siunitx}
+
+\usepackage{xfrac}
+
+\usepackage[
+  labelfont=bf,
+  font=small,
+  width=0.9\textwidth,
+]{caption}
+\usepackage{subcaption}
+
+\usepackage{graphicx}
+
+\usepackage{float}
+\usepackage{scrhack}
+\floatplacement{figure}{htbp}
+\floatplacement{table}{htbp}
+
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\usepackage{xparse}
+\usepackage{xstring}
+\usepackage{xcolor}
+\xdefinecolor{tugreen}{RGB}{128, 186, 38}
+\colorlet{tudark}{tugreen!60!black}
+
+\usepackage{scrlayer-scrpage}
+
+\usepackage{xsim}
+\DeclareTranslation{german}{exsheets-exercise-name}{Aufgabe}
+\usepackage{needspace}
+\DeclareExerciseEnvironmentTemplate{runin}
+{%
+\par\vspace{\baselineskip}
+\Needspace * {2\baselineskip}
+\noindent
+\textbf{\XSIMmixedcase{\GetExerciseName}~\GetExerciseProperty{counter}:}%
+\GetExercisePropertyT{subtitle}{ \textit{#1}} %
+\\ }
+ {}
+\xsimsetup{
+exercise/within=section ,
+exercise/template=runin,
+solution/template=runin,
+}
+
+\usepackage{enumitem}
+\setlist[enumerate,1]{label=\bfseries\alph*)}
+
+\usepackage[
+  colorlinks,
+  urlcolor=tugreen,
+  unicode,
+  pdfcreator={},
+  pdfproducer={},
+]{hyperref}
+\usepackage{bookmark}
+
+\usepackage[shortcuts]{extdash}
+\usepackage[paper=a4paper, bottom=20mm, right=27mm, left=27mm]{geometry}
+
+\DeclareExerciseType{aufgabe}{
+  exercise-env = aufgabe ,
+  solution-env = loesung ,
+  exercise-name = Aufgabe ,
+  solution-name = Lösung ,
+  exercises-name = Aufgaben ,
+  solutions-name = Lösungen ,
+  exercise-template = default ,
+  solution-template = default ,
+  exercise-heading = \subsection* ,
+  solution-heading = \subsection*
+}
+\DeclareExerciseType{altaufgabe}{
+  exercise-env = altaufgabe ,
+  solution-env = altloesung ,
+  exercise-name = Excercise ,
+  solution-name = Solution ,
+  exercises-name = Excercises ,
+  solutions-name = Solutions ,
+  exercise-template = runin ,
+  solution-template = runin ,
+  exercise-heading = \subsection* ,
+  solution-heading = \subsection*
+}
+
+% activate the solutions if jobname is solution
+\IfStrEq{\jobname}{\detokenize{solution}}{% True branch
+  \xsimsetup{
+    loesung/print=true,
+  }
+  \geometry{paper=a4paper, bottom=17mm, top=20mm, left=17mm, right=10mm}
+}{}
+
+\setkomafont{pagehead}{\bfseries\upshape\large}
+\makeatletter
+\ihead{%
+  \textcolor{tugreen}{\sheetnumber. Übungsblatt} \@title \\
+  Abgabe: \handindate
+}
+\chead{}
+\ohead{%
+  \textcolor{tugreen}{\@date} \\
+  \textcolor{tugreen}{\@author}
+}
+\makeatother
