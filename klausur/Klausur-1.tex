@@ -1,0 +1,304 @@
+\documentclass[fleqn,twoside]{scrartcl}
+\usepackage[utf8]{inputenc}
+
+\usepackage[aux]{rerunfilecheck}
+\usepackage[main=ngerman]{babel}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage{fontspec}
+
+\usepackage[
+  math-style=ISO,
+  bold-style=ISO,
+  sans-style=italic,
+  nabla=upright,
+  partial=upright,
+]{unicode-math}
+\setmathfont{Latin Modern Math}
+
+\usepackage[autostyle]{csquotes}
+
+\usepackage[
+  locale=DE,
+  separate-uncertainty=true,
+  per-mode=symbol-or-fraction,
+]{siunitx}
+
+\usepackage{xfrac}
+
+\usepackage[
+  labelfont=bf,
+  font=small,
+  width=0.9\textwidth,
+]{caption}
+\usepackage{subcaption}
+
+\usepackage{graphicx}
+
+\usepackage{float}
+\usepackage{scrhack}
+\floatplacement{figure}{htbp}
+\floatplacement{table}{htbp}
+
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\usepackage{xparse}
+\usepackage{xstring}
+\usepackage{xcolor}
+\xdefinecolor{tugreen}{RGB}{128, 186, 38}
+\colorlet{tudark}{tugreen!60!black}
+
+\usepackage{microtype}
+\usepackage[top=2cm,left=1.5cm,right=1.5cm]{geometry}
+
+\usepackage{enumitem}
+\setlist[enumerate,1]{label=\bfseries\alph*), parsep=0pt}
+
+\usepackage[
+  colorlinks,
+  urlcolor=tudark,
+  unicode,
+  pdfcreator={},
+  pdfproducer={},
+]{hyperref}
+\usepackage{bookmark}
+
+\usepackage[shortcuts]{extdash}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{patterns}
+\usetikzlibrary{quotes,angles}
+\usetikzlibrary{circuits.ee.IEC}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{framed}
+
+\setkomafont{pageheadfoot}{\normalfont}
+\markboth{}{Name: \underline{\hspace{8.1cm}} Matrikelnummer: \underline{\hspace{5.6cm}}}
+\pagestyle{myheadings}
+
+%%% Settings
+\newcommand{\thesemester}{Wintersemester 2019/2020}
+\newcommand{\theprofessor}{Prof.~Dr.~Maximilian~Mustermann}
+\newcommand{\thedate}{31. Februar 1234}
+
+\newcommand{\pkt}[1]{\textbf{#1\,P.}}
+
+\newcounter{exercise}
+\newenvironment{exercise}
+[2]
+{\addtocounter{exercise}{1}{\Large{\bfseries{Aufgabe \arabic{exercise}:~#1}\hfill(#2 Punkte)}}\parskip5ex
+
+}
+{\medskip}
+\newif\ifdisplaysolutions
+\IfStrEq{\jobname}{\detokenize{solution}}{% True branch
+  \displaysolutionstrue
+}{}
+
+\newenvironment{solution}
+{
+	\ifdisplaysolutions ~\\ {\Large{\bfseries{Lösung zu Aufgabe \arabic{exercise}:}\\\parskip5ex}}
+  \else
+  	\setbox0\vbox\bgroup
+  \fi
+}
+{\ifdisplaysolutions
+  \medskip
+  \else
+  	\egroup
+  \fi
+}
+
+\setlength{\parindent}{0mm}
+
+\usepackage{mleftright}
+\DeclarePairedDelimiter{\bra}{\langle}{\rvert}
+\DeclarePairedDelimiter{\ket}{\lvert}{\rangle}
+\DeclarePairedDelimiterX{\braket}[2]{\langle}{\rangle}{#1 \delimsize| #2}
+
+\usepackage{expl3}
+\ExplSyntaxOn
+\NewDocumentCommand \dif {m} {\mathinner{\mathrm{d} #1}}
+\NewDocumentCommand \del {m} {\mathinner{\mathrm{δ} #1}}
+\NewDocumentCommand \Del {m} {\mathinner{\mathrm{Δ} #1}}
+\NewDocumentCommand \matrize {m} {\underline{\underline{#1}}}
+\NewDocumentCommand \abs {m} {\left|#1\right|}
+\NewDocumentCommand \ableitung {mm} {\frac{\partial #1}{\partial #2}}
+\NewDocumentCommand \abl {mm} {\frac{\dif{#1}}{\dif{#2}}}
+\NewDocumentCommand \I {} {\mathrm{i}}
+\NewDocumentCommand \E {} {\mathrm{e}}
+\NewDocumentCommand \mpi {} {\symup{π}}
+\NewDocumentCommand \grau {m} {\textcolor{gray}{#1}}
+\NewDocumentCommand \rot {m} {\textcolor{red}{#1}}
+\NewDocumentCommand \tug {m} {\textcolor{tugreen}{#1}}
+\NewDocumentCommand \zB {} {z.\,B.~}
+\NewDocumentCommand \DaH {} {d.\,h.~}
+\NewDocumentCommand \IN {} {^{-1}}
+\NewDocumentCommand \punkte {m} {\textcolor{red}{\textit{(#1)}}}
+\let\ltext=\l
+\RenewDocumentCommand \l {} {\TextOrMath{ \ltext }{ \mleft }}
+\let\raccent=\r
+\RenewDocumentCommand \r {} {\TextOrMath{ \raccent }{ \mright }}
+\ExplSyntaxOff
+\NewDocumentCommand \zZ {} {\textsf{Z\kern-.49em\raise-0.65ex\hbox{Z}}}
+
+% See: https://alexwlchan.net/2017/10/latex-underlines/
+\usepackage{contour}
+\usepackage{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+\newcommand{\myuline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
+\newcommand{\leerseite}{\newpage\hspace{1cm}\newpage}
+
+
+\begin{document}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\begin{titlepage}
+	\begin{center}
+		\vspace*{0cm}
+    %%% Settings
+		{\Huge\bfseries Abschlussklausur zur Vorlesung}\smallskip\\
+		{\Huge\bfseries Theoretische Methoden des Genitivs}\bigskip\\
+		{\huge\bfseries \thesemester}\\
+		\vspace{.5cm}
+		\ifdisplaysolutions
+			\vspace{-.25cm}
+			{\Huge\bfseries \color{red}\textsc{Musterlösung}}\\
+			\vspace{-.75cm}
+		\fi
+
+    {\Large
+    	\vspace{1cm}
+    	{\sffamily \theprofessor} \\
+    	\vspace{0.5cm}
+      %%% Settings
+    	Technische Universität Dortmund \\
+    	\vspace{1cm}
+    	\begin{tabular}{l l}
+      	Name:					& \underline{\hspace{8cm}} \\
+      	Vorname:			& \underline{\hspace{8cm}} \\
+      	Matrikel-Nr.: & \underline{\hspace{8cm}} \\
+      	Studiengang:	& \underline{\hspace{8cm}} \\
+      	Übungsgruppe: & \underline{\hspace{8cm}} \\
+      	Unterschrift: & \underline{\hspace{8cm}}
+      \end{tabular}
+    }\\
+
+    \vspace{0.5cm}
+    \myuline{Erlaubte Hilfsmittel:} \\
+    	Keine \\
+    \myuline{Benutzung dokumentenechter Stifte (keine Bleistifte)! Keine Rotstifte!} \\
+    \vspace{0.5cm}
+    Die Bearbeitungszeit beträgt \textbf{180 Minuten}. \\
+    \vspace{0.5cm}
+    Trennen Sie unter keinen Umständen die Heftung der Klausur.
+		Benutzen Sie nur die Blätter der Heftung (auch Rückseiten),
+		oder durch die Assistenten ausgeteilte, zusätzliche Blätter. \\
+    Schreiben Sie \myuline{Name und Vorname} oben auf jedes Lösungblatt. \\
+    Legen Sie bitte zu Beginn der Klausur Ihren Studierendenausweis sichtbar aus. \\
+
+    \begin{center}
+    	\resizebox{0.7\textwidth}{!}{
+      	\begin{tabular}{| c | | *{7}{p{1cm}|} | p{1cm} |}
+        	\hline
+          %%% Settings | die {7} ↑ auch | und die Anzahl an &
+        	Aufgabe & 1 & 2 & 3 & 4 & 5 & 6 & $\sum$ \\
+        	\hline
+        	Max. Punkte & 18 & 10 & 10 & 6 & 6 & 6 & 56 \\
+        	\hline
+        	& & & & & & & \\
+        	Erreichte Punkte & & & & & & & \\
+        	& & & & & & & \\
+					\hline
+      	\end{tabular}
+      } \\
+      \vspace{.45cm}
+      %%% Settings
+      \SI{100}{\percent} entsprechen XX Punkten.
+			Die Klausur gilt mit XX erreichten Punkten als bestanden! \\
+      \begin{large} Viel Erfolg! \end{large} \\
+      \vspace{.45cm}
+			\thedate
+    \end{center}
+		\vspace{.75cm}
+    \fbox{\textbf{Bitte unterschreiben Sie die Erklärungen auf der Rückseite.}}
+  \end{center}
+\end{titlepage}
+
+\newpage
+\thispagestyle{empty}
+\begin{framed}
+	\textbf{Die folgende Erklärung bitte \myuline{vor Klausurbeginn} lesen und unterschreiben:}
+  \parskip1ex
+
+	Ich habe zur Kenntnis genommen, dass die
+  %%% Settings
+  Fakultät Genitiv
+  diese Klausur nur bis zum
+  %%% Settings
+  \textbf{19.05.2020}
+  aufbewahrt,
+  falls ich sie nicht nach der Klausureinsicht persönlich in Empfang nehme.
+  Nach diesem Zeitpunkt werden nur das Deckblatt mit persönlichen Angaben und
+	Klausurergebnis sowie diese Seite archiviert, die Aufgabenblätter werden vernichtet.
+  \parskip1ex
+
+  %%% Settings
+  31. Februar 1234,~~Unterschrift: \underline{\hspace{12.1cm}}
+\end{framed}
+
+\begin{framed}
+  \textbf{Die folgende Erklärung bitte \myuline{vor Klausurbeginn} lesen und unterschreiben:}
+  \parskip1ex
+
+  Ich bin damit einverstanden, dass meine Note unter Angabe meiner Matrikelnummer
+	online im Moodle veröffentlicht wird.
+  \parskip1ex
+
+  %%% Settings
+  31. Februar 1234,~~Unterschrift: \underline{\hspace{12.1cm}}
+\end{framed}
+
+\vfill
+
+\begin{framed}
+  \textbf{Die folgende Erklärung bitte \myuline{bei Klausurrückgabe} lesen und unterschreiben:}
+  \parskip1ex
+
+  Hiermit bestätige ich den Erhalt meiner vollständigen Klausur.
+  Ich erkenne das Ergebnis an.
+	\parskip1ex
+
+  Datum:\underline{\hspace{3.5cm}},~~Unterschrift: \underline{\hspace{10.1cm}}
+\end{framed}
+
+\newpage
+
+\input{Contents/Kurzfragen.tex}
+
+\ifdisplaysolutions
+\newpage
+\else
+\leerseite
+\fi
+
+\input{Contents/A2.tex}
+\ifdisplaysolutions
+\newpage
+\else
+\leerseite
+\fi
+
+\end{document}
