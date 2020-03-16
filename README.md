@@ -1,5 +1,5 @@
 # tu-do-ex-sheets
-Template for excercise sheets in LaTeX with xsim. And a little bit TU-green. 
+Template for exercise sheets in LaTeX with xsim. And a little bit TU-green. 
 
 ## References:
 - https://github.com/MaxNoe/exsheets_template
