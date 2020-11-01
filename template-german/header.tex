@@ -7,58 +7,73 @@
 
 \usepackage[aux]{rerunfilecheck}
 
+% deutsche Spracheinstellungen
 \usepackage[main=ngerman]{babel}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
 
+\usepackage[
+  version=4,
+  math-greek=default,
+  text-greek=default,
+]{mhchem}
+
+% Fonteinstellungen
 \usepackage{fontspec}
 
 \usepackage[
-  math-style=ISO,
-  bold-style=ISO,
-  sans-style=italic,
-  nabla=upright,
-  partial=upright,
+  math-style=ISO,    % \
+  bold-style=ISO,    % |
+  sans-style=italic, % | ISO-Standard folgen
+  nabla=upright,     % |
+  partial=upright,   % /
 ]{unicode-math}
 \setmathfont{Latin Modern Math}
 
+% richtige Anführungszeichen
 \usepackage[autostyle]{csquotes}
 
+% Zahlen und Einheiten
 \usepackage[
-  locale=DE,
-  separate-uncertainty=true,
-  per-mode=symbol-or-fraction,
+  locale=DE,                   % deutsche Einstellungen
+  separate-uncertainty=true,   % Immer Fehler mit \pm
+  per-mode=symbol-or-fraction, % m/s im Text, sonst Brüche
 ]{siunitx}
 
+% schöne Brüche im Text
 \usepackage{xfrac}
 
 \usepackage[
-  labelfont=bf,
-  font=small,
-  width=0.9\textwidth,
+  labelfont=bf,        % Tabelle x: Abbildung y: ist jetzt fett
+  font=small,          % Schrift etwas kleiner als Dokument
+  width=0.9\textwidth, % maximale Breite einer Caption schmaler
 ]{caption}
 \usepackage{subcaption}
 
 \usepackage{graphicx}
 
+% Standardplatzierung für Floats einstellen
 \usepackage{float}
 \usepackage{scrhack}
 \floatplacement{figure}{htbp}
 \floatplacement{table}{htbp}
 
+% schöne Tabellen
 \usepackage{booktabs}
 \usepackage{multirow}
 
 \usepackage{xparse}
 \usepackage{xstring}
 \usepackage{xcolor}
-\xdefinecolor{tugreen}{RGB}{128, 186, 38}
-\colorlet{tudark}{tugreen!60!black}
 
+
+% Kopfzeile:
 \usepackage{scrlayer-scrpage}
 
+
+% Pakate für die Aufgaben
 \usepackage{xsim}
 \DeclareTranslation{german}{exsheets-exercise-name}{Aufgabe}
 \usepackage{needspace}
@@ -78,20 +93,24 @@ solution/template=runin,
 }
 
 \usepackage{enumitem}
-\setlist[enumerate,1]{label=\bfseries\alph*)}
+\setlist[enumerate,1]{label=\bfseries\alph*), parsep=0pt}
 
+% Hyperlinks im Dokument
 \usepackage[
   colorlinks,
-  urlcolor=tugreen,
+  urlcolor=tudark,
   unicode,
-  pdfcreator={},
-  pdfproducer={},
+  pdfcreator={},  % PDF-Attribute säubern
+  pdfproducer={}, % "
 ]{hyperref}
 \usepackage{bookmark}
 
+% Trennung von Wörtern mit Strichen
 \usepackage[shortcuts]{extdash}
 \usepackage[paper=a4paper, bottom=20mm, right=27mm, left=27mm]{geometry}
+\usepackage{tikz}
 
+% german
 \DeclareExerciseType{aufgabe}{
   exercise-env = aufgabe ,
   solution-env = loesung ,
@@ -99,41 +118,36 @@ solution/template=runin,
   solution-name = Lösung ,
   exercises-name = Aufgaben ,
   solutions-name = Lösungen ,
-  exercise-template = default ,
-  solution-template = default ,
-  exercise-heading = \subsection* ,
-  solution-heading = \subsection*
-}
-\DeclareExerciseType{altaufgabe}{
-  exercise-env = altaufgabe ,
-  solution-env = altloesung ,
-  exercise-name = Excercise ,
-  solution-name = Solution ,
-  exercises-name = Excercises ,
-  solutions-name = Solutions ,
   exercise-template = runin ,
   solution-template = runin ,
   exercise-heading = \subsection* ,
   solution-heading = \subsection*
 }
 
-% activate the solutions if jobname is solution
+%% activate the solutions if jobname is solution
 \IfStrEq{\jobname}{\detokenize{solution}}{% True branch
   \xsimsetup{
     loesung/print=true,
   }
-  \geometry{paper=a4paper, bottom=17mm, top=20mm, left=17mm, right=10mm}
+%  \geometry{paper=a4paper, bottom=17mm, top=20mm, left=17mm, right=10mm}
 }{}
 
+%%% change here for english or german or other languages
+%%% or change color from tu settings
 \setkomafont{pagehead}{\bfseries\upshape\large}
 \makeatletter
 \ihead{%
-  \textcolor{tugreen}{\sheetnumber. Übungsblatt} \@title \\
+  \textcolor{tugreen}{\Large \sheetnumber. Übungsblatt} \\
   Abgabe: \handindate
 }
 \chead{}
 \ohead{%
-  \textcolor{tugreen}{\@date} \\
-  \textcolor{tugreen}{\@author}
+  \textcolor{tudark}{\@title~im \@date~} \\
+  \textcolor{tudark}{\@author}
 }
 \makeatother
+
+\renewcommand{\theequation}{\theaufgabe{}.\arabic{equation}}%
+\numberwithin{equation}{aufgabe}%
+
+\input{commands.tex}

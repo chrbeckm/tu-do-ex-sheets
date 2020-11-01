@@ -1,0 +1,45 @@
+\usepackage{mleftright}
+\DeclarePairedDelimiter{\bra}{\langle}{\rvert}
+\DeclarePairedDelimiter{\ket}{\lvert}{\rangle}
+\DeclarePairedDelimiterX{\braket}[2]{\langle}{\rangle}{#1 \delimsize| #2}
+
+\usepackage{expl3}
+\ExplSyntaxOn
+\NewDocumentCommand \dif {m} {\mathinner{\mathrm{d} #1}}
+\NewDocumentCommand \del {m} {\mathinner{\mathrm{δ} #1}}
+\NewDocumentCommand \Del {m} {\mathinner{\mathrm{Δ} #1}}
+\NewDocumentCommand \matrize {m} {\underline{\underline{#1}}}
+\NewDocumentCommand \abs {m} {\left|#1\right|}
+\NewDocumentCommand \ableitung {mm} {\frac{\partial #1}{\partial #2}}
+\NewDocumentCommand \abl {mm} {\frac{\dif{#1}}{\dif{#2}}}
+\NewDocumentCommand \I {} {\mathrm{i}}
+\NewDocumentCommand \E {} {\mathrm{e}}
+\NewDocumentCommand \mpi {} {\symup{π}}
+\NewDocumentCommand \grau {m} {\textcolor{gray}{#1}}
+\NewDocumentCommand \rot {m} {\textcolor{red}{#1}}
+\NewDocumentCommand \tug {m} {\textcolor{tugreen}{#1}}
+\NewDocumentCommand \zB {} {z.\,B.~}
+\NewDocumentCommand \DaH {} {d.\,h.~}
+\NewDocumentCommand \IN {} {^{-1}}
+\NewDocumentCommand \vn {} {\vec{\nabla}}
+\let\ltext=\l
+\RenewDocumentCommand \l {} {\TextOrMath{ \ltext }{ \mleft }}
+\let\raccent=\r
+\RenewDocumentCommand \r {} {\TextOrMath{ \raccent }{ \mright }}
+\let\ktext=\k
+\RenewDocumentCommand \k {m} {\TextOrMath{ \ltext }{ \l(#1\r) }}
+\ExplSyntaxOff
+\NewDocumentCommand \zZ {} {\textsf{Z\kern-.49em\raise-0.65ex\hbox{Z}}}
+
+\xdefinecolor{tugreen}{RGB}{128, 186, 38}
+\colorlet{tudark}{tugreen!60!black}
+
+% See: https://alexwlchan.net/2017/10/latex-underlines/
+\usepackage{contour}
+\usepackage{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+\newcommand{\myuline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}

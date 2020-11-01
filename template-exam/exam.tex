@@ -11,38 +11,43 @@
 \usepackage{fontspec}
 
 \usepackage[
-  math-style=ISO,
-  bold-style=ISO,
-  sans-style=italic,
-  nabla=upright,
-  partial=upright,
+  math-style=ISO,    % \
+  bold-style=ISO,    % |
+  sans-style=italic, % | ISO-Standard folgen
+  nabla=upright,     % |
+  partial=upright,   % /
 ]{unicode-math}
 \setmathfont{Latin Modern Math}
 
+% richtige Anführungszeichen
 \usepackage[autostyle]{csquotes}
 
+% Zahlen und Einheiten
 \usepackage[
-  locale=DE,
-  separate-uncertainty=true,
-  per-mode=symbol-or-fraction,
+  locale=DE,                   % deutsche Einstellungen
+  separate-uncertainty=true,   % Immer Fehler mit \pm
+  per-mode=symbol-or-fraction, % m/s im Text, sonst Brüche
 ]{siunitx}
 
+% schöne Brüche im Text
 \usepackage{xfrac}
 
 \usepackage[
-  labelfont=bf,
-  font=small,
-  width=0.9\textwidth,
+  labelfont=bf,        % Tabelle x: Abbildung y: ist jetzt fett
+  font=small,          % Schrift etwas kleiner als Dokument
+  width=0.9\textwidth, % maximale Breite einer Caption schmaler
 ]{caption}
 \usepackage{subcaption}
 
 \usepackage{graphicx}
 
+% Standardplatzierung für Floats einstellen
 \usepackage{float}
 \usepackage{scrhack}
 \floatplacement{figure}{htbp}
 \floatplacement{table}{htbp}
 
+% schöne Tabellen
 \usepackage{booktabs}
 \usepackage{multirow}
 
@@ -53,6 +58,7 @@
 \colorlet{tudark}{tugreen!60!black}
 
 \usepackage{microtype}
+% Margins
 \usepackage[top=2cm,left=1.5cm,right=1.5cm]{geometry}
 
 \usepackage{enumitem}
@@ -62,8 +68,8 @@
   colorlinks,
   urlcolor=tudark,
   unicode,
-  pdfcreator={},
-  pdfproducer={},
+  pdfcreator={},  % PDF-Attribute säubern
+  pdfproducer={}, % "
 ]{hyperref}
 \usepackage{bookmark}
 
@@ -80,17 +86,21 @@
 \usetikzlibrary{decorations.pathreplacing}
 \usepackage{framed}
 
+% Head and Foot
 \setkomafont{pageheadfoot}{\normalfont}
 \markboth{}{Name: \underline{\hspace{8.1cm}} Matrikelnummer: \underline{\hspace{5.6cm}}}
 \pagestyle{myheadings}
 
+% Variables
 %%% Settings
 \newcommand{\thesemester}{Wintersemester 2019/2020}
-\newcommand{\theprofessor}{Prof.~Dr.~Maximilian~Mustermann}
-\newcommand{\thedate}{31. Februar 1234}
+\newcommand{\theprofessor}{Prof.~Dr.~Max~Muster}
+\newcommand{\thedate}{??. Februar ????}
 
+% Layout
 \newcommand{\pkt}[1]{\textbf{#1\,P.}}
 
+% Macros
 \newcounter{exercise}
 \newenvironment{exercise}
 [2]
@@ -99,6 +109,9 @@
 }
 {\medskip}
 \newif\ifdisplaysolutions
+% Switch on solutions
+%\ifdefined\issolution
+%\fi
 \IfStrEq{\jobname}{\detokenize{solution}}{% True branch
   \displaysolutionstrue
 }{}
@@ -168,9 +181,9 @@
 \begin{titlepage}
 	\begin{center}
 		\vspace*{0cm}
-    %%% Settings
 		{\Huge\bfseries Abschlussklausur zur Vorlesung}\smallskip\\
-		{\Huge\bfseries Theoretische Methoden des Genitivs}\bigskip\\
+    %%% Settings
+		{\Huge\bfseries Modul}\bigskip\\
 		{\huge\bfseries \thesemester}\\
 		\vspace{.5cm}
 		\ifdisplaysolutions
@@ -198,9 +211,11 @@
 
     \vspace{0.5cm}
     \myuline{Erlaubte Hilfsmittel:} \\
+    %%% Settings
     	Keine \\
     \myuline{Benutzung dokumentenechter Stifte (keine Bleistifte)! Keine Rotstifte!} \\
     \vspace{0.5cm}
+    %%% Settings
     Die Bearbeitungszeit beträgt \textbf{180 Minuten}. \\
     \vspace{0.5cm}
     Trennen Sie unter keinen Umständen die Heftung der Klausur.
@@ -211,9 +226,10 @@
 
     \begin{center}
     	\resizebox{0.7\textwidth}{!}{
-      	\begin{tabular}{| c | | *{7}{p{1cm}|} | p{1cm} |}
+      %%% Settings
+      %%% An Punkte anpassen
+    	  \begin{tabular}{| c | | *{7}{p{1cm}|} | p{1cm} |}
         	\hline
-          %%% Settings | die {7} ↑ auch | und die Anzahl an &
         	Aufgabe & 1 & 2 & 3 & 4 & 5 & 6 & $\sum$ \\
         	\hline
         	Max. Punkte & 18 & 10 & 10 & 6 & 6 & 6 & 56 \\
@@ -226,8 +242,8 @@
       } \\
       \vspace{.45cm}
       %%% Settings
-      \SI{100}{\percent} entsprechen XX Punkten.
-			Die Klausur gilt mit XX erreichten Punkten als bestanden! \\
+      \SI{100}{\percent} entsprechen 56 Punkten.
+			Die Klausur gilt mit 29 erreichten Punkten als bestanden! \\
       \begin{large} Viel Erfolg! \end{large} \\
       \vspace{.45cm}
 			\thedate
@@ -243,20 +259,16 @@
 	\textbf{Die folgende Erklärung bitte \myuline{vor Klausurbeginn} lesen und unterschreiben:}
   \parskip1ex
 
-	Ich habe zur Kenntnis genommen, dass die
   %%% Settings
-  Fakultät Genitiv
-  diese Klausur nur bis zum
-  %%% Settings
-  \textbf{19.05.2020}
-  aufbewahrt,
-  falls ich sie nicht nach der Klausureinsicht persönlich in Empfang nehme.
+	Ich habe zur Kenntnis genommen, dass die Fakultät \punkte{\%\%\% Settings} diese Klausur nur
+	bis zum \textbf{??.??.????} aufbewahrt, falls ich sie nicht nach der
+	Klausureinsicht persönlich in Empfang nehme.
   Nach diesem Zeitpunkt werden nur das Deckblatt mit persönlichen Angaben und
 	Klausurergebnis sowie diese Seite archiviert, die Aufgabenblätter werden vernichtet.
   \parskip1ex
 
   %%% Settings
-  31. Februar 1234,~~Unterschrift: \underline{\hspace{12.1cm}}
+  \thedate,~~Unterschrift: \underline{\hspace{12.1cm}}
 \end{framed}
 
 \begin{framed}
@@ -268,7 +280,7 @@
   \parskip1ex
 
   %%% Settings
-  31. Februar 1234,~~Unterschrift: \underline{\hspace{12.1cm}}
+  \thedate,~~Unterschrift: \underline{\hspace{12.1cm}}
 \end{framed}
 
 \vfill
