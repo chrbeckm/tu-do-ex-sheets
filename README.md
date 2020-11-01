@@ -4,7 +4,7 @@ Repo for excercise sheet template, and for exam template with LaTeX.
 The styling colors are according to TU Dortmund.
 
 Not every comment is in english, sorry for that.
-If there are challenges in understanding something, feel free to contact me.
+If there are challenges in understanding something, feel free to open an issue.
 
 The sheets are with the `xSim`-package, the exam not,
 the chosen method works better for me.
