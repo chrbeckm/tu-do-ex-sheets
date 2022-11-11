@@ -8,7 +8,7 @@
 \usepackage[aux]{rerunfilecheck}
 
 % deutsche Spracheinstellungen
-\usepackage[main=ngerman]{babel}
+\usepackage[main=english]{babel}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -37,7 +37,6 @@
 
 % Zahlen und Einheiten
 \usepackage[
-  locale=DE,                   % deutsche Einstellungen
   separate-uncertainty=true,   % Immer Fehler mit \pm
   per-mode=symbol-or-fraction, % m/s im Text, sonst Brüche
 ]{siunitx}
@@ -110,19 +109,6 @@ solution/template=runin,
 \usepackage[paper=a4paper, bottom=20mm, right=27mm, left=27mm]{geometry}
 \usepackage{tikz}
 
-% german
-\DeclareExerciseType{aufgabe}{
-  exercise-env = aufgabe ,
-  solution-env = loesung ,
-  exercise-name = Aufgabe ,
-  solution-name = Lösung ,
-  exercises-name = Aufgaben ,
-  solutions-name = Lösungen ,
-  exercise-template = runin ,
-  solution-template = runin ,
-  exercise-heading = \subsection* ,
-  solution-heading = \subsection*
-}
 % english
 \DeclareExerciseType{question}{
   exercise-env = question ,
@@ -162,6 +148,6 @@ solution/template=runin,
 \makeatother
 
 \renewcommand{\theequation}{\theaufgabe{}.\arabic{equation}}%
-\numberwithin{equation}{aufgabe}%
+\numberwithin{equation}{exercise}%
 
 \input{commands.tex}

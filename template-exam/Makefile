@@ -4,7 +4,7 @@ TeXOptions = \
   --interaction=nonstopmode \
   --halt-on-error
 
-all: build/exam.pdf build/exam-solution.pdf
+all: build/exam.pdf build/solution.pdf
 
 build/exam.pdf: FORCE | build
 	latexmk $(TeXOptions) exam.tex
@@ -12,9 +12,8 @@ build/exam.pdf: FORCE | build
 preview: FORCE | build
 	latexmk -pvc $(TeXOptions) exam.tex
 
-build/exam-Loesung.pdf: FORCE | build
+build/solution.pdf: FORCE | build
 	latexmk $(TeXOptions) --jobname=solution exam.tex
-	cp build/solution.pdf build/exam-solution.pdf
 
 preview-solution: FORCE | build
 	latexmk -pvc $(TeXOptions) --jobname=solution exam.tex
