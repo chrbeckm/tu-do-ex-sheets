@@ -74,17 +74,24 @@
 
 % Pakate für die Aufgaben
 \usepackage{xsim}
-\DeclareTranslation{german}{exsheets-exercise-name}{Aufgabe}
 \usepackage{needspace}
 \DeclareExerciseEnvironmentTemplate{runin}
 {%
-\par\vspace{\baselineskip}
-\Needspace * {2\baselineskip}
-\noindent
-\textbf{\XSIMmixedcase{\GetExerciseName}~\GetExerciseProperty{counter}:}%
-\GetExercisePropertyT{subtitle}{ \textit{#1}} %
-\\ }
- {}
+  \par\vspace{\baselineskip}
+  \Needspace * {2\baselineskip}
+  \noindent
+  \textbf{\XSIMmixedcase{\GetExerciseName}~\GetExerciseProperty{counter}:}%
+  \GetExercisePropertyT{subtitle}{ \textit{#1}} %
+  \GetExercisePropertyT{points}{
+    \marginpar{%
+      \hspace{-6em}(%
+        \printgoal{\PropertyValue}%
+        \GetExercisePropertyT{bonus-points}{~[+\printgoal{\PropertyValue}]}%
+      )%
+      Punkte
+    }%
+  }\\
+}{}
 \xsimsetup{
 exercise/within=section ,
 exercise/template=runin,
@@ -127,7 +134,7 @@ solution/template=runin,
 %% activate the solutions if jobname is solution
 \IfStrEq{\jobname}{\detokenize{solution}}{% True branch
   \xsimsetup{
-    loesung/print=true,
+    qu-solution/print=true,
   }
 %  \geometry{paper=a4paper, bottom=17mm, top=20mm, left=17mm, right=10mm}
 }{}
@@ -147,7 +154,7 @@ solution/template=runin,
 }
 \makeatother
 
-\renewcommand{\theequation}{\theaufgabe{}.\arabic{equation}}%
-\numberwithin{equation}{exercise}%
+\renewcommand{\theequation}{\thequestion{}.\arabic{equation}}%
+\numberwithin{equation}{question}%
 
 \input{commands.tex}
