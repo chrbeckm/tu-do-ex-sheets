@@ -93,6 +93,7 @@
 
 % Variables
 %%% Settings
+\newcommand{\themodul}{Modulname}
 \newcommand{\thesemester}{Wintersemester 2019/2020}
 \newcommand{\theprofessor}{Prof.~Dr.~Max~Muster}
 \newcommand{\thedate}{??. Februar ????}
@@ -109,9 +110,6 @@
 }
 {\medskip}
 \newif\ifdisplaysolutions
-% Switch on solutions
-%\ifdefined\issolution
-%\fi
 \IfStrEq{\jobname}{\detokenize{solution}}{% True branch
   \displaysolutionstrue
 }{}
@@ -183,7 +181,7 @@
 		\vspace*{0cm}
 		{\Huge\bfseries Abschlussklausur zur Vorlesung}\smallskip\\
     %%% Settings
-		{\Huge\bfseries Modul}\bigskip\\
+		{\Huge\bfseries \themodul}\bigskip\\
 		{\huge\bfseries \thesemester}\\
 		\vspace{.5cm}
 		\ifdisplaysolutions
@@ -232,7 +230,7 @@
         	\hline
         	Aufgabe & 1 & 2 & 3 & 4 & 5 & 6 & $\sum$ \\
         	\hline
-        	Max. Punkte & 18 & 10 & 10 & 6 & 6 & 6 & 56 \\
+        	Max. Punkte & \punkte{X} & \punkte{X} & x & x & x & x & XX \\
         	\hline
         	& & & & & & & \\
         	Erreichte Punkte & & & & & & & \\
@@ -242,8 +240,8 @@
       } \\
       \vspace{.45cm}
       %%% Settings
-      \SI{100}{\percent} entsprechen 56 Punkten.
-			Die Klausur gilt mit 29 erreichten Punkten als bestanden! \\
+      \SI{100}{\percent} entsprechen \punkte{X} Punkten.
+			Die Klausur gilt mit \punkte{X} erreichten Punkten als bestanden! \\
       \begin{large} Viel Erfolg! \end{large} \\
       \vspace{.45cm}
 			\thedate
@@ -267,7 +265,6 @@
 	Klausurergebnis sowie diese Seite archiviert, die Aufgabenblätter werden vernichtet.
   \parskip1ex
 
-  %%% Settings
   \thedate,~~Unterschrift: \underline{\hspace{12.1cm}}
 \end{framed}
 
@@ -279,7 +276,6 @@
 	online im Moodle veröffentlicht wird.
   \parskip1ex
 
-  %%% Settings
   \thedate,~~Unterschrift: \underline{\hspace{12.1cm}}
 \end{framed}
 
