@@ -240,21 +240,21 @@
       } \\
       \vspace{.45cm}
       %%% Settings
-      \SI{100}{\percent} entsprechen \punkte{X} Punkten.
+      \qty{100}{\percent} entsprechen \punkte{X} Punkten.
 			Die Klausur gilt mit \punkte{X} erreichten Punkten als bestanden! \\
       \begin{large} Viel Erfolg! \end{large} \\
       \vspace{.45cm}
 			\thedate
     \end{center}
 		\vspace{.75cm}
-    \fbox{\textbf{Bitte unterschreiben Sie die Erklärungen auf der Rückseite.}}
+    \fbox{\textbf{Bitte beachten Sie die Erklärungen oben auf der Rückseite.}}
   \end{center}
 \end{titlepage}
 
 \newpage
 \thispagestyle{empty}
 \begin{framed}
-	\textbf{Die folgende Erklärung bitte \myuline{vor Klausurbeginn} lesen und unterschreiben:}
+	\textbf{Die folgende Erklärung bitte \myuline{vor dem Klausurbeginn} lesen und gegebenenfalls unterschreiben:}
   \parskip1ex
 
   %%% Settings
@@ -269,7 +269,7 @@
 \end{framed}
 
 \begin{framed}
-  \textbf{Die folgende Erklärung bitte \myuline{vor Klausurbeginn} lesen und unterschreiben:}
+  \textbf{Die folgende Erklärung bitte \myuline{vor dem Klausurbeginn} lesen und gegebenenfalls unterschreiben:}
   \parskip1ex
 
   Ich bin damit einverstanden, dass meine Note unter Angabe meiner Matrikelnummer
@@ -295,18 +295,13 @@
 \newpage
 
 \input{Contents/Kurzfragen.tex}
-
-\ifdisplaysolutions
 \newpage
-\else
-\leerseite
-\fi
 
 \input{Contents/A2.tex}
 \ifdisplaysolutions
-\newpage
+  \newpage
 \else
-\leerseite
+  \leerseite
 \fi
 
 \end{document}
